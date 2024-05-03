@@ -3,6 +3,16 @@ import ImageUploader from "@/components/imageUploader";
 import AnimalDetail from "@/components/animalDetail";
 import { animalAttribute } from "@/data/animal_description";
 import { useState } from "react";
+import { Button, ButtonProps, styled } from "@mui/material";
+import { orange, purple } from "@mui/material/colors";
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: orange[500],
+  "&:hover": {
+    backgroundColor: orange[700],
+  },
+}));
 
 export default function Home() {
   const [data, setData] = useState<
@@ -10,6 +20,13 @@ export default function Home() {
   >([]);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-16">
+      <a href="https://xcurv-fp-kcv.hf.space/">
+        <div className="absolute top-6 right-6 xl:top-16 xl:right-20">
+          <ColorButton className="text-black font-bold xl:py-4 xl:px-4 xl:text-md" variant="contained">
+            Gradio
+          </ColorButton>
+        </div>
+      </a>
       <h1 className="text-4xl font-bold text-center">
         Animal Image Classifier
       </h1>
