@@ -1,10 +1,10 @@
 "use client";
-import ImageUploader from "@/components/imageUploader";
 import AnimalDetail from "@/components/animalDetail";
 import { animalAttribute } from "@/data/animal_description";
 import { useState } from "react";
-import { Button, ButtonProps, styled } from "@mui/material";
+import { Button, ButtonProps, CircularProgress, styled } from "@mui/material";
 import { orange, purple } from "@mui/material/colors";
+import ImageUploaderV2 from "@/components/imageUploaderV2";
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -18,6 +18,7 @@ export default function Home() {
   const [data, setData] = useState<
     Array<{ name: string; prediction: number } & animalAttribute>
   >([]);
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-16">
       <div className="absolute top-6 right-6 xl:top-16 xl:right-20">
@@ -29,28 +30,39 @@ export default function Home() {
             Gradio
           </ColorButton>
         </a>
-        <a href="/new-predict">
+        <a href="/">
           <ColorButton
             className="text-black font-bold xl:py-4 xl:px-4 xl:text-md ml-4"
             variant="contained"
           >
-            V2
+            V1
           </ColorButton>
         </a>
       </div>
       <h1 className="text-4xl font-bold text-center">
         Animal Image Classifier
       </h1>
-      <ImageUploader animalData={data} updateAnimalData={setData} />
+      <ImageUploaderV2
+        animalData={data}
+        updateAnimalData={setData}
+        setLoading={setLoading}
+      />
       <div className="mt-4">
         {data.length > 0 && data[0].prediction > 0.66 ? (
           data.map((animal, i) =>
             animal.prediction > 0.2 ? (
-              <AnimalDetail key={i.toString()} expand={i == 0} data={animal} />
+              <AnimalDetail
+                key={i.toString()}
+                expand={i == 0}
+                data={animal}
+                flagPrediction={false}
+              />
             ) : (
               <></>
             )
           )
+        ) : loading ? (
+          <CircularProgress />
         ) : (
           <h1 className="text-2xl text-red-800 font-bold text-center">
             Image not recognized

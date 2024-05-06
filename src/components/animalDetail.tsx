@@ -16,9 +16,10 @@ interface AnimalDetailProps {
   key: string;
   expand: boolean;
   data: animal & animalAttribute;
+  flagPrediction?: boolean;
 }
 
-function AnimalDetail({ key, expand, data }: AnimalDetailProps) {
+function AnimalDetail({ key, expand, data, flagPrediction=true }: AnimalDetailProps) {
   return (
     <div className="mt-4">
       <Accordion defaultExpanded={expand}>
@@ -27,10 +28,10 @@ function AnimalDetail({ key, expand, data }: AnimalDetailProps) {
           aria-controls="panel-content"
           id={key}
         >
-          <Typography>{data.name}</Typography>
+          <Typography className="font-bold text-xl">{data.name}</Typography>
         </AccordionSummary>
         <div className="mr-2">
-          <PredicionPercentage value={data.prediction * 100} />
+          {flagPrediction && <PredicionPercentage value={data.prediction * 100} />}
         </div>
         <AccordionDetails>
           <Typography>

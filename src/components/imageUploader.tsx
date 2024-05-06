@@ -66,7 +66,7 @@ function ImageUploader({ animalData, updateAnimalData }: ImageUploaderProps): JS
         const formData = new FormData();
         formData.append('file', blob);
     
-        const response = await axios.post('https://xcurv-docker-animal-classification.hf.space/predict', formData, {
+        const response = await axios.post('https://api-animal-prediction.xcurv.cloud/predict', formData, {
           timeout: 60000 // Increase timeout to 60 seconds (in milliseconds)
         });
     
