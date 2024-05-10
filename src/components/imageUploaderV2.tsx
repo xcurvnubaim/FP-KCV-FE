@@ -127,7 +127,7 @@ function ImageUploaderV2({
                   id="upload"
                   type="file"
                   className="hidden"
-                  accept="image/jpeg"
+                  accept="image/*"
                   onChange={handleImageUpload}
                 />
                 <label htmlFor="upload" className="cursor-pointer">
@@ -153,7 +153,7 @@ function ImageUploaderV2({
                     <b className="text-gray-600">2mb</b>
                   </p>
                   <p className="font-normal text-sm text-gray-400 md:px-6">
-                    and should be in <b className="text-gray-600">JPEG</b>{" "}
+                    and should be in <b className="text-gray-600">Image</b>{" "}
                     format.
                   </p>
                   <span
