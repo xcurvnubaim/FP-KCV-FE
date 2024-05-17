@@ -21,6 +21,14 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-16">
       <div className="absolute top-6 right-6 xl:top-16 xl:right-20">
+        <a href="https://medium.com/@luckysantoso709/facing-wildlife-with-ai-a-web-implementation-of-the-cnn-animal-classification-model-for-predicting-e0d52cae7818">
+          <ColorButton
+            className="text-black font-bold xl:py-4 xl:px-4 xl:text-md mr-4"
+            variant="contained"
+          >
+            Article
+          </ColorButton>
+        </a>
         <a href="https://xcurv-fp-kcv.hf.space/">
           <ColorButton
             className="text-black font-bold xl:py-4 xl:px-4 xl:text-md"
