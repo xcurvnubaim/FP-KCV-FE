@@ -48,7 +48,7 @@ export default function Home() {
         </a>
       </div>
       <h1 className="text-4xl font-bold text-center">
-        Animal Image Classifier V2
+        Animal Image Classifier V2 ( Currently Not Available use gradio instead )
       </h1>
       <ImageUploaderV2
         animalData={data}
